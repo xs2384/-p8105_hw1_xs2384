@@ -16,10 +16,10 @@ df <- tibble(
   fac_vec = factor(c("0","1","0","2","1","2","0","1"))
 )
 
-mean(pull(df, norm_sp))
-mean(pull(df, logi_vec))
-mean(pull(df, chr_vec))
-mean(pull(df, fac_vec))
+#mean(pull(df, norm_sp))
+#mean(pull(df, logi_vec))
+#mean(pull(df, chr_vec))
+#mean(pull(df, fac_vec))
 ```
 
-
+The mean of random sample and logical vector works with function mean, and the character vector and factor vector doen't work. 
