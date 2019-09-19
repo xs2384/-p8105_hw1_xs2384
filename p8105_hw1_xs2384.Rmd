@@ -22,4 +22,4 @@ df <- tibble(
 #mean(pull(df, fac_vec))
 ```
 
-The mean of random sample and logical vector works with function mean, and the character vector and factor vector doen't work. 
+The mean of random sample and logical vector works with function mean, but the character vector and factor vector doen't work. 
