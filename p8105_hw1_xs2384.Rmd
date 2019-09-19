@@ -6,7 +6,7 @@ output: github_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
+## Problem 1
 ```{r}
 library(tidyverse)
 df <- tibble(
@@ -16,10 +16,65 @@ df <- tibble(
   fac_vec = factor(c("0","1","0","2","1","2","0","1"))
 )
 
-#mean(pull(df, norm_sp))
-#mean(pull(df, logi_vec))
-#mean(pull(df, chr_vec))
-#mean(pull(df, fac_vec))
+mean(pull(df, norm_sp))
+mean(pull(df, logi_vec))
+mean(pull(df, chr_vec))
+mean(pull(df, fac_vec))
 ```
 
 The mean of random sample and logical vector works with function mean, but the character vector and factor vector doen't work. 
+
+```{r, eval=FALSE}
+as.numeric(df$logi_vec)
+as.numeric(df$chr_vec)
+as.numeric(df$fac_vec)
+```
+
+All of three functions run the result successfully. For the logical vector, the 'True' and 'False' were transferred to 1 and 0. The character was successfully changed to its original input, since the data itself is numeric but its type was character. For the factor vector, I typed the numbers as the factor level and it could be transferred to numeric finally.   
+
+This does explain why the mean function was failed on these variables. The mean function can only calculate the data type of numeric and logical, although the factor vector and character vector I typed are numbers.
+
+```{r}
+as.numeric(df$logi_vec) * df$norm_sp
+as.factor(df$logi_vec) * df$norm_sp
+as.numeric(as.factor(df$logi_vec)) * df$norm_sp
+```
+
+## Problem 2
+```{r}
+df2 <- tibble(
+  x = rnorm(500),
+  y = rnorm(500),
+  comp = x + y >1,
+  coer_lton = as.numeric(comp),
+  coer_ltof = as.factor(comp)
+)
+
+
+
+```
+
+The size of datasets is `r nrow(df2)` rows, and `r ncol(df2)` colunms. 
+
+The mean, median and standard deviation of variable x is `r mean(df2$x)`, `r median(df2$x)` and `r sd(df2$x)`.
+
+The proportion of cases for wich x + y > 1 is : `r 
+t = 0
+count = 0
+for(i in df2$comp){
+  if(i == TRUE){
+    t = t+1
+  }
+  count = count +1
+}
+t/count `.
+
+```{r}
+ggplot(df2, aes(x = x, y = y, color = df2$comp)) + geom_point()
+ggplot(df2, aes(x = x, y = y, color = df2$coer_lton)) + geom_point()
+ggplot(df2, aes(x = x, y = y, color = df2$coer_ltof)) + geom_point()
+
+```
+
+
+
