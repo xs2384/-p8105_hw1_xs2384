@@ -70,9 +70,9 @@ for(i in df2$comp){
 t/count `.
 
 ```{r}
-plot_1 <- ggplot(df2, aes(x = x, y = y, color = df2$comp)) + geom_point()
-plot_2 <- ggplot(df2, aes(x = x, y = y, color = df2$coer_lton)) + geom_point()
-plot_3 <- ggplot(df2, aes(x = x, y = y, color = df2$coer_ltof)) + geom_point()
+plot_1 <- ggplot(df2, aes(x = x, y = y, color = df2$comp)) + geom_point() + ggtitle("plot_1")
+plot_2 <- ggplot(df2, aes(x = x, y = y, color = df2$coer_lton)) + geom_point() + ggtitle("plot_2")
+plot_3 <- ggplot(df2, aes(x = x, y = y, color = df2$coer_ltof)) + geom_point() + ggtitle("plot_3")
 ggsave('HW1_plot.pdf',plot = plot_1)
 ```
 
